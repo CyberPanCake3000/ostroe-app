@@ -16,7 +16,7 @@
 
 <header class="d-flex flex-shrink-0">
     <div class="col-3 d-none d-md-flex bg-white px-md-5 py-md-3 py-2 align-items-center">
-        <img src="/attachments/brand/logo.png" alt="" height="40px" class="d-none d-md-block">
+        <img src="{{URL::asset('/attachments/brand/logo.png')}}" alt="" height="40px" class="d-none d-md-block">
     </div>
     <div class="container px-md-5 py-md-3 py-2">
         <div class="p-3 p-md-4 bg-white rounded-4 d-flex justify-content-between ">
@@ -80,7 +80,7 @@
                 class="btn btn-primary text-white d-flex justify-content-center align-items-center col-12"
                 data-bs-toggle="modal"
                 data-bs-target="#addOrderModal">
-                <span class="fs-3 lh-1 m-1">+</span>
+                <i class="bi bi-plus-lg"></i>
                 <span class="d-none d-md-block">Добавить заказ</span>
             </button>
         </div>
@@ -140,7 +140,25 @@
                 </div>
             </div>
         </div>
-        <main class="py-4">
+
+        <main class="">
+            @if($message = Session::get('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div>
+                        {{ $message }}
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if($error = Session::get('error'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div>
+                        {{ $error }}
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             @yield('content')
         </main>
 
