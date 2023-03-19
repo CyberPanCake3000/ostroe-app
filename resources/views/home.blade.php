@@ -63,9 +63,9 @@
                                         {{ $customer->id }}
                                     </a>
                                 </div>
-                                <div class="col-md-4 col-5">{{ $customer->name }}</div>
-                                <div class="col-md-4 col-5">{{ $customer->birth_date }}</div>
-                                <div class="col-md-3 col-5">{{ $customer->getPhoneNumber->phone_number }}</div>
+                                <div class="col-md-4 col-5">{{ $customer->getCustomerInfo->name }}</div>
+                                <div class="col-md-4 col-5">{{ $customer->getCustomerInfo->birth_date }}</div>
+                                <div class="col-md-3 col-5">{{ $customer->phone }}</div>
                             </div>
                         @endforeach
                     </div>

@@ -31,7 +31,6 @@ class CustomerController extends Controller
      */
     public function store(CustomerRequest $request)
     {
-//        dd($request);
         $customerInfo = CustomerInfo::create($request->all());
         $customer = Customer::create([
             'customer_info_id' => $customerInfo->id,
@@ -63,14 +62,19 @@ class CustomerController extends Controller
      */
     public function update(CustomerRequest $request, Customer $customer)
     {
-        $updatedCustomer = $customer::update($request->all());
+        $customerInfo = $customer->getCustomerInfo;
+        $updatedCustomerInfo = $customerInfo->update($request->all());
+        $updatedCustomer = $customer->update([
+            'phone' => $request->get('phone'),
+            'comment' => $request->get('comment'),
+        ]);
 
-        if(!$updatedCustomer)
+        if(!$updatedCustomer || !$updatedCustomerInfo)
         {
-            return redirect()->route('customer/index')->with(['error' => "Информация о покупателе №$customer->id не обновлена"]);
+            return redirect()->route('customer.index')->with(['error' => "Информация о покупателе №$customer->id не обновлена"]);
         }
 
-        return redirect()->route('customer/index')->with(['message' => "Информация о покупателе №$customer->id успешно обновлена!"]);
+        return redirect()->route('customer.index')->with(['message' => "Информация о покупателе №$customer->id успешно обновлена!"]);
     }
 
     /**
@@ -78,6 +82,13 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        if(count($customer->getOrders) != 0){
+            return redirect()->route('customer.index')->with(['error' => "Неаозможно удалить информацию о покупателе №$customer->id!"]);
+        }
+
+        $customerInfo = $customer->getCustomerInfo;
+        $customerInfo->delete();
+
+        return redirect()->route('customer.index')->with(['message' => "Информация о покупателе №$customer->id успешно удалена!"]);
     }
 }

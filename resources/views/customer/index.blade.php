@@ -29,7 +29,8 @@
                 <div class="overflow-scroll">
                     <div class="border-bottom p-2 d-flex">
                         <div class="fw-bold col-md-1 col-1 me-2">№</div>
-                        <div class="fw-bold col-md-3 col-5">ФИО</div>
+                        <div class="fw-bold col-md-3 col-4">ФИО</div>
+                        <div class="fw-bold col-md-3 col-5">Номер телефона</div>
                         <div class="fw-bold col-md-3 col-4">Дата рождения</div>
                     </div>
                     @foreach($customers as $customer)
@@ -37,7 +38,8 @@
                         <div class="d-flex border-bottom p-2" data-bs-toggle="modal"
                              data-bs-target="#orderModal{{ $customer->id }}">
                             <div class="col-md-1 col-1 me-2">{{ $customer->id }}</div>
-                            <div class="col-md-3 col-5">{{ $customer->getCustomerInfo->name }}</div>
+                            <div class="col-md-3 col-4">{{ $customer->getCustomerInfo->name }}</div>
+                            <div class="col-md-3 col-5">{{ $customer->phone }}</div>
                             <div class="col-md-3 col-4">{{ $customer->getCustomerInfo->birth_date }}</div>
                         </div>
 
@@ -53,9 +55,17 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <h2 class="text-text fw-bold">
-                                            {{ $customer->getCustomerInfo->name }}
-                                        </h2>
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <h2 class="text-text fw-bold">
+                                                {{ $customer->getCustomerInfo->name }}
+                                            </h2>
+
+                                            <a href="{{ route('customer.show', $customer->id) }}" class="btn btn-outline-primary d-flex flex-row">
+                                                <span class="d-none d-md-block">Подробнее</span>
+                                                <i class="bi bi-box-arrow-in-up-right ms-md-2"></i>
+                                            </a>
+                                        </div>
+
 
                                         <div class="mb-3">
                                             {{ $customer->getCustomerInfo->birth_date }}
@@ -157,7 +167,6 @@
                                                     <div class="row border-bottom">
                                                         <div class="fw-bold col-1">№</div>
                                                         <div class="fw-bold col-5">Дата</div>
-                                                        <div class="fw-bold col-5">Номер телефона</div>
                                                         <div class="col-1"></div>
                                                     </div>
                                                     @foreach($customer->getOrders as $order)
@@ -165,8 +174,6 @@
                                                             <a href="{{ route('orders.show', $order->id) }}"
                                                                class="col-1">{{ $order->id }}</a>
                                                             <div class="col-5">{{ $order->getDate() }}</div>
-                                                            <div
-                                                                class="col-5">{{ $order->getCustomer->getPhoneNumber->phone_number }}</div>
                                                         </div>
                                                     @endforeach
                                                 </div>
@@ -177,7 +184,7 @@
                                             <form action="{{ route('customer.destroy', $customer->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-outline-error me-2" type="submit">Удалить
+                                                <button class="btn btn-outline-danger me-2" type="submit">Удалить
                                                 </button>
                                                 <a class="btn btn-primary text-white"
                                                    href="{{ route('customer.edit', $customer->id) }}">Изменить</a>

@@ -12,7 +12,7 @@
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
 </head>
-<body class="min-vh-100 d-flex flex-column">
+<body class="min-vh-100 d-flex flex-column mb-5 mb-md-0">
 
 <header class="d-flex flex-shrink-0">
     <div class="col-3 d-none d-md-flex bg-white px-md-5 py-md-3 py-2 align-items-center">
@@ -135,7 +135,7 @@
             </div>
         </div>
 
-        <main class="">
+        <main class="mb-3 mb-md-0">
             @if($message = Session::get('message'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <div>

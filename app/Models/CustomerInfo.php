@@ -10,4 +10,5 @@ class CustomerInfo extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'birth_date', 'OD_Sph', 'OD_Cyl', 'OD_ax', 'OS_Sph', 'OS_Cyl', 'OS_ax', 'Dpp'];
+
 }
