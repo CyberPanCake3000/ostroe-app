@@ -237,6 +237,16 @@
                         </div>
 
                         <div class="row g-2 align-items-start mb-3">
+                            <div class="col-md-6 col-12">
+                                <label for="phone" class="form-label">Номер телефона покупателя</label>
+                                <input list="phone_list" id="phone" name="phone"
+                                       class="phone_number form-control" type="tel" required/>
+                                <datalist id="phone_list" class="phone_list">
+
+                                </datalist>
+
+                            </div>
+
                             <div class="col-6">
                                 <label for="name" class="form-label">Имя покупателя</label>
                                 <input list="customers" name="name" id="name" type="text" class="name form-control"
@@ -250,17 +260,13 @@
                                 <input name="birth_date" id="birth_date" type="date"
                                        class="birth_date form-control">
                             </div>
-                            <div class="col-md-6 col-12">
-                                <label for="phone" class="form-label">Номер телефона покупателя</label>
-                                <input list="phone_list" id="phone" name="phone"
-                                       class="phone_number form-control" type="tel" required/>
-                                <datalist id="phone_list" class="phone_list">
 
-                                </datalist>
-
-                            </div>
                         </div>
-
+                        <div>
+                            <label for="customer_comment" class="form-label">Комментарий покупателя</label>
+                            <textarea type="text" class="customer_comment form-control mb-3" name="customer_comment"
+                                      id="customer_comment"></textarea>
+                        </div>
                         <div class="d-flex align-items-end mb-3">
                             <h4 class="m-0 col-1">
                                 OD

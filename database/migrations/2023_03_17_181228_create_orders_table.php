@@ -16,10 +16,10 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('cascade');
 
-            $table->string('glasses_model');
-            $table->tinyText('comment');
+            $table->string('glasses_model')->nullable();
+            $table->tinyText('comment')->nullable();
         });
     }
 

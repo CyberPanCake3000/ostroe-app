@@ -161,7 +161,7 @@
                                                 </div>
                                             </div>
                                         @else
-                                            <div class="">
+                                            <div class="mb-2">
                                                 <h5>Заказы покупателя</h5>
                                                 <div class="px-2">
                                                     <div class="row border-bottom">
@@ -171,9 +171,9 @@
                                                     </div>
                                                     @foreach($customer->getOrders as $order)
                                                         <div class="row border-bottom py-2">
-                                                            <a href="{{ route('orders.show', $order->id) }}"
+                                                            <a href="{{ route('order.show', $order->id) }}"
                                                                class="col-1">{{ $order->id }}</a>
-                                                            <div class="col-5">{{ $order->getDate() }}</div>
+                                                            <div class="col-5">{{ $order->created_at->format('d.m.Y H:i') }}</div>
                                                         </div>
                                                     @endforeach
                                                 </div>

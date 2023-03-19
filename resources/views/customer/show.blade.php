@@ -11,7 +11,7 @@
                     </h2>
 
                     <div class="mb-3">
-                        {{ $customer->getCustomerInfo->birth_date->format('d.m.Y') }}
+                        {{ $customer->getCustomerInfo->birth_date }}
                     </div>
 
                     <div class="d-flex align-items-end mb-3">
@@ -127,11 +127,11 @@
                         @foreach($customer->getOrders as $order)
                             <div class="d-flex border-bottom p-2">
                                 <div class="col-1">
-                                    <a href="{{ route('orders.show', $order->id) }}">
+                                    <a href="{{ route('order.show', $order->id) }}">
                                         {{ $order->id }}
                                     </a>
                                 </div>
-                                <div class="col-md-4 col-5">{{ $order->getDate() }}</div>
+                                <div class="col-md-4 col-5">{{ $order->created_at->format('d.m.Y H:i') }}</div>
                                 <div class="col-md-7 col-6">{{ $order->comment }}</div>
                             </div>
                         @endforeach

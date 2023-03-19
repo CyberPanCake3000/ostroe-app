@@ -19,14 +19,6 @@ class CustomerController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(CustomerRequest $request)
@@ -83,7 +75,8 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         if(count($customer->getOrders) != 0){
-            return redirect()->route('customer.index')->with(['error' => "Неаозможно удалить информацию о покупателе №$customer->id!"]);
+            return redirect()->route('customer.index')
+                ->with(['error' => "Неаозможно удалить информацию о покупателе №$customer->id!. У покупателя есть заказы."]);
         }
 
         $customerInfo = $customer->getCustomerInfo;
