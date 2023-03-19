@@ -37,8 +37,8 @@
                         <div class="d-flex border-bottom p-2" data-bs-toggle="modal"
                              data-bs-target="#orderModal{{ $customer->id }}">
                             <div class="col-md-1 col-1 me-2">{{ $customer->id }}</div>
-                            <div class="col-md-3 col-5">{{ $customer->name }}</div>
-                            <div class="col-md-3 col-4">{{ $customer->getBirthDate() }}</div>
+                            <div class="col-md-3 col-5">{{ $customer->getCustomerInfo->name }}</div>
+                            <div class="col-md-3 col-4">{{ $customer->getCustomerInfo->birth_date }}</div>
                         </div>
 
                         <div class="modal fade" id="orderModal{{ $customer->id }}" tabindex="-1"
@@ -54,15 +54,15 @@
                                     </div>
                                     <div class="modal-body">
                                         <h2 class="text-text fw-bold">
-                                            {{ $customer->name }}
+                                            {{ $customer->getCustomerInfo->name }}
                                         </h2>
 
                                         <div class="mb-3">
-                                            {{ $customer->getBirthDate() }}
+                                            {{ $customer->getCustomerInfo->birth_date }}
                                         </div>
 
                                         <div class="mb-3">
-                                            {{ $customer->getPhoneNumber->phone_number }}
+                                            {{ $customer->phone }}
                                         </div>
 
                                         <div class="d-flex align-items-end mb-3">
@@ -76,7 +76,7 @@
                                                         Sph
                                                     </div>
                                                     <div>
-                                                        {{ $customer->OD_Sph }}
+                                                        {{ $customer->getCustomerInfo->OD_Sph }}
                                                     </div>
                                                 </div>
 
@@ -85,7 +85,7 @@
                                                         Cyl
                                                     </div>
                                                     <div>
-                                                        {{ $customer->OD_Cyl }}
+                                                        {{ $customer->getCustomerInfo->OD_Cyl }}
                                                     </div>
                                                 </div>
 
@@ -94,7 +94,7 @@
                                                         ax
                                                     </div>
                                                     <div>
-                                                        {{ $customer->OD_ax }}
+                                                        {{ $customer->getCustomerInfo->OD_ax }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,7 +111,7 @@
                                                         Sph
                                                     </div>
                                                     <div>
-                                                        {{ $customer->OS_Sph }}
+                                                        {{ $customer->getCustomerInfo->OS_Sph }}
                                                     </div>
                                                 </div>
 
@@ -120,7 +120,7 @@
                                                         Cyl
                                                     </div>
                                                     <div>
-                                                        {{ $customer->OS_Cyl }}
+                                                        {{ $customer->getCustomerInfo->OS_Cyl }}
                                                     </div>
                                                 </div>
 
@@ -129,7 +129,7 @@
                                                         ax
                                                     </div>
                                                     <div>
-                                                        {{ $customer->OS_ax }}
+                                                        {{ $customer->getCustomerInfo->OS_ax }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,7 +138,7 @@
                                         <div class="d-flex justify-content-start mb-3">
                                             <div class="col-4">
                                                 <div class="text-muted">Dpp</div>
-                                                {{ $customer->Dpp }}
+                                                {{ $customer->getCustomerInfo->Dpp }}
                                             </div>
                                         </div>
 
@@ -173,7 +173,7 @@
                                             </div>
 
                                         @endif
-                                        <div class="modal-footer">
+                                        <div class="d-flex justify-content-end">
                                             <form action="{{ route('customer.destroy', $customer->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -200,7 +200,7 @@
     <div class="modal fade" id="addCustomerModal" tabindex="-1" aria-labelledby="addCustomerModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <form action="{{ route('customer.store') }}" class="modal-content">
+            <form id="addCustomerForm" action="{{ route('customer.store') }}" class="modal-content" method="POST">
                 @csrf
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="addCustomerModalLabel">Добавить покупателя</h1>
@@ -224,19 +224,85 @@
                         <div class="col-md-6 col-12">
                             <label for="phone" class="form-label">Номер телефона покупателя</label>
                             <input list="phone_list" id="phone" name="phone"
-                                   class="phone_number form-control" type="tel" required/>
+                                   class="phone form-control" type="tel" required/>
                             <datalist id="phone_list" class="phone_list">
 
                             </datalist>
                         </div>
                     </div>
+                    <div class="d-flex align-items-end mb-3">
+                        <h4 class="m-0 col-1">
+                            OD
+                        </h4>
 
+                        <div class="row gx-3 container-fluid">
+                            <div class="col-4">
+                                <label for="OD_Sph" class="form-label">Sph</label>
+                                <input type="number" value="0" step="any" name="OD_Sph" id="OD_Sph"
+                                       class="OD_Sph form-control">
+                            </div>
 
+                            <div class="col-4">
+                                <label for="OD_Cyl" class="form-label">Cyl</label>
+                                <input type="number" value="0" step="any" name="OD_Cyl" id="OD_Cyl"
+                                       class="OD_Cyl form-control">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="OD_ax" class="form-label">ax</label>
+                                <input type="number" value="0" step="any" name="OD_ax" id="OD_ax"
+                                       class="OD_ax form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-end mb-3">
+                        <h4 class="m-0 col-1">
+                            OS
+                        </h4>
+
+                        <div class="row gx-3 container-fluid">
+                            <div class="col-4">
+                                <label for="OS_Sph" class="form-label">Sph</label>
+                                <input type="number" value="0" step="any" name="OS_Sph" id="OS_Sph"
+                                       class="OS_Sph form-control">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="OS_Cyl" class="form-label">Cyl</label>
+                                <input type="number" value="0" step="any" name="OS_Cyl" id="OS_Cyl"
+                                       class="OS_Cyl form-control">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="OS_ax" class="form-label">ax</label>
+                                <input type="number" value="0" step="any" name="OS_ax" id="OS_ax"
+                                       class="OS_ax form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 align-items-end mb-3">
+                        <div class="col-6">
+                            <label for="Dpp" class="form-label">Dpp</label>
+                            <input name="Dpp" id="Dpp" type="number" value="0" step="any"
+                                   class="Dpp form-control">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="comment" class="form-label">Комментарий по заказу</label>
+                        <textarea type="text" class="comment form-control mb-3" name="comment"
+                                  id="comment"></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
-                    <button type="submit" class="btn btn-primary">Добавить</button>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Отменить</button>
+                        <button type="submit" class="btn btn-primary">Добавить</button>
+                    </div>
                 </div>
+
             </form>
         </div>
     </div>

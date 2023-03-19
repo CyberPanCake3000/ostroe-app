@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Http\Requests\CustomerRequest;
+use App\Models\CustomerInfo;
 
 class CustomerController extends Controller
 {
@@ -27,17 +29,25 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CustomerRequest $request)
     {
-        //
+//        dd($request);
+        $customerInfo = CustomerInfo::create($request->all());
+        $customer = Customer::create([
+            'customer_info_id' => $customerInfo->id,
+            'phone' => $request->get('phone'),
+            'comment' => $request->get('comment'),
+        ]);
+
+        return redirect()->route('customer.index')->with(['message' => "Покупатель №$customer->id успешно создан"]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Customer $customer)
     {
-        //
+        return view('customer/show', compact('customer'));
     }
 
     /**
@@ -51,15 +61,22 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CustomerRequest $request, Customer $customer)
     {
-        //
+        $updatedCustomer = $customer::update($request->all());
+
+        if(!$updatedCustomer)
+        {
+            return redirect()->route('customer/index')->with(['error' => "Информация о покупателе №$customer->id не обновлена"]);
+        }
+
+        return redirect()->route('customer/index')->with(['message' => "Информация о покупателе №$customer->id успешно обновлена!"]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Customer $customer)
     {
         //
     }

@@ -15,5 +15,5 @@ Route::get('/', function(){
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/support', [HomeController::class, 'support'])->name('support')->middleware('auth');
 
-Route::resource('customer', CustomerController::class)->middleware('auth');
+Route::resource('customer', CustomerController::class)->middleware('auth')->except(['create']);
 Route::resource('order', OrderController::class)->middleware('auth');

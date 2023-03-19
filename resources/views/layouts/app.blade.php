@@ -227,7 +227,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="createForm" action="{{ route('order.store') }}" method="POST">
+                    <form id="addOrderForm" action="{{ route('order.store') }}" method="POST">
                         @csrf
                         <div id="errorDiv" class="alert alert-danger d-none">
                             <span class="fw-bold">Ошибка заполнения формы!</span>
