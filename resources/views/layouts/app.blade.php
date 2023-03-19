@@ -48,24 +48,18 @@
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                    <div>
+                        <a class="btn btn-primary d-flex flex-row" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <span class="d-none d-md-block">Выйти</span>
+                            <i class="bi bi-box-arrow-right ms-md-2"></i>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                Выйти
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
                 @endguest
             </ul>
 
@@ -80,7 +74,7 @@
                 class="btn btn-primary text-white d-flex justify-content-center align-items-center col-12"
                 data-bs-toggle="modal"
                 data-bs-target="#addOrderModal">
-                <i class="bi bi-plus-lg"></i>
+                <i class="bi bi-plus-lg me-0 me-md-2"></i>
                 <span class="d-none d-md-block">Добавить заказ</span>
             </button>
         </div>
@@ -340,7 +334,7 @@
 
                         <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Отмена</button>
-                            <button type="submit" id="submitForm" class="btn btn-primary text-white">Добавить</button>
+                            <button type="submit" id="addOrderSubmit" class="btn btn-primary text-white">Добавить</button>
                         </div>
                     </form>
                 </div>

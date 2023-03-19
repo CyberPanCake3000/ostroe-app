@@ -1,19 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="d-flex justify-content-between align-items-center">
+        <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">Все покупатели
+                </button>
+            </li>
+        </ul>
 
-    <ul class="nav nav-pills mb-3 d-flex justify-content-between" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">Все покупатели
-            </button>
-        </li>
-
-        <button type="button" class="btn btn-outline-primary d-flex flex-row justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
-            <i class="bi bi-plus-lg"></i>
+        <button type="button" class="btn btn-outline-primary d-flex flex-row justify-content-center align-items-center"
+                data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+            <i class="bi bi-plus-lg me-0 me-md-2"></i>
             <span class="d-none d-md-block">Добавить покупателя</span>
         </button>
-    </ul>
+    </div>
+
 
     @if(count($customers) == 0)
         <div class="bg-dark bg-opacity-10 rounded-4 d-flex justify-content-center py-5">
@@ -197,19 +200,44 @@
     <div class="modal fade" id="addCustomerModal" tabindex="-1" aria-labelledby="addCustomerModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <form action="{{ route('customer.store') }}" class="modal-content">
+                @csrf
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addCustomerModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="addCustomerModalLabel">Добавить покупателя</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div class="row g-2 align-items-start mb-3">
+                        <div class="col-6">
+                            <label for="name" class="form-label">Имя покупателя</label>
+                            <input list="customers" name="name" id="name" type="text" class="name form-control"
+                                   placeholder="Имя покупателя" required>
+                            <datalist id="customers" class="customers">
+
+                            </datalist>
+                        </div>
+                        <div class="col-6">
+                            <label for="birth_date" class="form-label">Дата рождения</label>
+                            <input name="birth_date" id="birth_date" type="date"
+                                   class="birth_date form-control">
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <label for="phone" class="form-label">Номер телефона покупателя</label>
+                            <input list="phone_list" id="phone" name="phone"
+                                   class="phone_number form-control" type="tel" required/>
+                            <datalist id="phone_list" class="phone_list">
+
+                            </datalist>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                    <button type="submit" class="btn btn-primary">Добавить</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
