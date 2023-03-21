@@ -16,9 +16,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('phone');
 
-            $table->unsignedBigInteger('customer_info_id');
-            $table->foreign('customer_info_id')->references('id')->on('customer_infos')->onDelete('cascade')->onUpdate('cascade');
-
             $table->tinyText('comment')->nullable();
         });
     }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Requests\CustomerRequest;
-use App\Models\CustomerInfo;
 
 class CustomerController extends Controller
 {
@@ -23,13 +22,7 @@ class CustomerController extends Controller
      */
     public function store(CustomerRequest $request)
     {
-        $customerInfo = CustomerInfo::create($request->all());
-        $customer = Customer::create([
-            'customer_info_id' => $customerInfo->id,
-            'phone' => $request->get('phone'),
-            'comment' => $request->get('comment'),
-        ]);
-
+        $customer = Customer::create($request->all());
         return redirect()->route('customer.index')->with(['message' => "Покупатель №$customer->id успешно создан"]);
     }
 
@@ -54,14 +47,9 @@ class CustomerController extends Controller
      */
     public function update(CustomerRequest $request, Customer $customer)
     {
-        $customerInfo = $customer->getCustomerInfo;
-        $updatedCustomerInfo = $customerInfo->update($request->all());
-        $updatedCustomer = $customer->update([
-            'phone' => $request->get('phone'),
-            'comment' => $request->get('comment'),
-        ]);
+        $updatedCustomer = $customer->update($request->all());
 
-        if(!$updatedCustomer || !$updatedCustomerInfo)
+        if(!$updatedCustomer)
         {
             return redirect()->route('customer.index')->with(['error' => "Информация о покупателе №$customer->id не обновлена"]);
         }
@@ -79,8 +67,7 @@ class CustomerController extends Controller
                 ->with(['error' => "Неаозможно удалить информацию о покупателе №$customer->id!. У покупателя есть заказы."]);
         }
 
-        $customerInfo = $customer->getCustomerInfo;
-        $customerInfo->delete();
+        $customer->delete();
 
         return redirect()->route('customer.index')->with(['message' => "Информация о покупателе №$customer->id успешно удалена!"]);
     }

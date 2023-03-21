@@ -15,7 +15,7 @@
 
         <div>
             <h2 class="text-text fw-bold">
-                {{ $order->getCustomer->getCustomerInfo->name }}
+                {{ $order->getCustomer->name }}
             </h2>
 
             <div class="fw-bold">
@@ -37,7 +37,7 @@
                             Sph
                         </div>
                         <div>
-                            {{ $order->getCustomer->getCustomerInfo->OD_Sph }}
+                            {{ $order->getCustomer->OD_Sph }}
                         </div>
                     </div>
 
@@ -46,7 +46,7 @@
                             Cyl
                         </div>
                         <div>
-                            {{ $order->getCustomer->getCustomerInfo->OD_Cyl }}
+                            {{ $order->getCustomer->OD_Cyl }}
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                             ax
                         </div>
                         <div>
-                            {{ $order->getCustomer->getCustomerInfo->OD_ax }}
+                            {{ $order->getCustomer->OD_ax }}
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                             Sph
                         </div>
                         <div>
-                            {{ $order->getCustomer->getCustomerInfo->OS_Sph }}
+                            {{ $order->getCustomer->OS_Sph }}
                         </div>
                     </div>
 
@@ -81,7 +81,7 @@
                             Cyl
                         </div>
                         <div>
-                            {{ $order->getCustomer->getCustomerInfo->OS_Cyl }}
+                            {{ $order->getCustomer->OS_Cyl }}
                         </div>
                     </div>
 
@@ -90,7 +90,7 @@
                             ax
                         </div>
                         <div>
-                            {{ $order->getCustomer->getCustomerInfo->OS_ax }}
+                            {{ $order->getCustomer->OS_ax }}
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
             <div class="d-flex justify-content-start mb-3">
                 <div class="col-4">
                     <div class="text-muted">Dpp</div>
-                    {{ $order->getCustomer->getCustomerInfo->Dpp }}
+                    {{ $order->getCustomer->Dpp }}
                 </div>
 
                 <div class="col-4">

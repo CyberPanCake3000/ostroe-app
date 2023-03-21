@@ -7,11 +7,11 @@
                 <h2>Покупатель №{{ $customer->id }}</h2>
                 <div>
                     <h2 class="text-text fw-bold">
-                        {{ $customer->getCustomerInfo->name }}
+                        {{ $customer->name }}
                     </h2>
 
                     <div class="mb-3">
-                        {{ $customer->getCustomerInfo->birth_date }}
+                        {{ $customer->birth_date }}
                     </div>
 
                     <div class="d-flex align-items-end mb-3">
@@ -25,7 +25,7 @@
                                     Sph
                                 </div>
                                 <div>
-                                    {{ $customer->getCustomerInfo->OD_Sph }}
+                                    {{ $customer->OD_Sph }}
                                 </div>
                             </div>
 
@@ -34,7 +34,7 @@
                                     Cyl
                                 </div>
                                 <div>
-                                    {{ $customer->getCustomerInfo->OD_Cyl }}
+                                    {{ $customer->OD_Cyl }}
                                 </div>
                             </div>
 
@@ -43,7 +43,7 @@
                                     ax
                                 </div>
                                 <div>
-                                    {{ $customer->getCustomerInfo->OD_ax }}
+                                    {{ $customer->OD_ax }}
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                                     Sph
                                 </div>
                                 <div>
-                                    {{ $customer->getCustomerInfo->OS_Sph }}
+                                    {{ $customer->OS_Sph }}
                                 </div>
                             </div>
 
@@ -69,7 +69,7 @@
                                     Cyl
                                 </div>
                                 <div>
-                                    {{ $customer->getCustomerInfo->OS_Cyl }}
+                                    {{ $customer->OS_Cyl }}
                                 </div>
                             </div>
 
@@ -78,7 +78,7 @@
                                     ax
                                 </div>
                                 <div>
-                                    {{ $customer->getCustomerInfo->OS_ax }}
+                                    {{ $customer->OS_ax }}
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                     <div class="d-flex justify-content-start mb-3">
                         <div class="col-4">
                             <div class="text-muted">Dpp</div>
-                            {{ $customer->getCustomerInfo->Dpp }}
+                            {{ $customer->Dpp }}
                         </div>
                     </div>
 

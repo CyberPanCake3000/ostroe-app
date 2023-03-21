@@ -28,7 +28,7 @@
                     <div class="col-6">
                         <label for="name" class="form-label">Имя покупателя</label>
                         <input list="customers" name="name" id="name" type="text" class="name form-control"
-                               placeholder="Имя покупателя" value="{{ $order->getCustomer->getCustomerInfo->name }}"
+                               placeholder="Имя покупателя" value="{{ $order->getCustomer->name }}"
                                required>
                         <datalist id="customers" class="customers">
 
@@ -38,14 +38,14 @@
                         <label for="birth_date" class="form-label">Дата рождения</label>
                         <input name="birth_date" id="birth_date" type="date"
                                class="birth_date form-control"
-                               value="{{ $order->getCustomer->getCustomerInfo->birth_date }}">
+                               value="{{ $order->getCustomer->birth_date }}">
                     </div>
 
                     <div class="row g-2 align-items-end mb-3">
                         <div class="col-6">
                             <label for="Dpp" class="form-label">Dpp</label>
                             <input name="Dpp" id="Dpp" type="number" step="any"
-                                   class="form-control" value="{{ $order->getCustomer->getCustomerInfo->Dpp }}">
+                                   class="form-control" value="{{ $order->getCustomer->Dpp }}">
                         </div>
                         <div class="col-6">
                             <label for="glasses_model" class="form-label">Модель очков</label>
@@ -74,19 +74,19 @@
                             <div class="col-4">
                                 <label for="OD_Sph" class="form-label">Sph</label>
                                 <input type="number" step="any" name="OD_Sph" id="OD_Sph"
-                                       class="form-control" value="{{ $order->getCustomer->getCustomerInfo->OD_Sph }}">
+                                       class="form-control" value="{{ $order->getCustomer->OD_Sph }}">
                             </div>
 
                             <div class="col-4">
                                 <label for="OD_Cyl" class="form-label">Cyl</label>
                                 <input type="number" step="any" name="OD_Cyl" id="OD_Cyl"
-                                       class="form-control" value="{{ $order->getCustomer->getCustomerInfo->OD_Cyl }}">
+                                       class="form-control" value="{{ $order->getCustomer->OD_Cyl }}">
                             </div>
 
                             <div class="col-4">
                                 <label for="OD_ax" class="form-label">ax</label>
                                 <input type="number" step="any" name="OD_ax" id="OD_ax"
-                                       class="form-control" value="{{ $order->getCustomer->getCustomerInfo->OD_ax }}">
+                                       class="form-control" value="{{ $order->getCustomer->OD_ax }}">
                             </div>
                         </div>
                     </div>
@@ -100,19 +100,19 @@
                             <div class="col-4">
                                 <label for="OS_Sph" class="form-label">Sph</label>
                                 <input type="number" step="any" name="OS_Sph" id="OS_Sph"
-                                       class="form-control" value="{{ $order->getCustomer->getCustomerInfo->OS_ax }}">
+                                       class="form-control" value="{{ $order->getCustomer->OS_ax }}">
                             </div>
 
                             <div class="col-4">
                                 <label for="OS_Cyl" class="form-label">Cyl</label>
                                 <input type="number" step="any" name="OS_Cyl" id="OS_Cyl"
-                                       class="form-control" value="{{ $order->getCustomer->getCustomerInfo->OS_ax }}">
+                                       class="form-control" value="{{ $order->getCustomer->OS_ax }}">
                             </div>
 
                             <div class="col-4">
                                 <label for="OS_ax" class="form-label">ax</label>
                                 <input type="number" step="any" name="OS_ax" id="OS_ax"
-                                       class="form-control" value="{{ $order->getCustomer->getCustomerInfo->OS_ax }}">
+                                       class="form-control" value="{{ $order->getCustomer->OS_ax }}">
                             </div>
                         </div>
                     </div>

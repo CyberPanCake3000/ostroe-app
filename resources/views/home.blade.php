@@ -26,7 +26,7 @@
                                         {{ $order->id }}
                                     </a>
                                 </div>
-                                <div class="col-md-4 col-5">{{ $order->getCustomer->getCustomerInfo->name }}</div>
+                                <div class="col-md-4 col-5">{{ $order->getCustomer->name }}</div>
                                 <div
                                     class="col-md-4 col-5">{{ $order->getCustomer->phone }}</div>
                                 <div class="col-md-3 col-5">{{ $order->created_at->format('d.m.Y H:i') }}</div>
@@ -63,8 +63,8 @@
                                         {{ $customer->id }}
                                     </a>
                                 </div>
-                                <div class="col-md-4 col-5">{{ $customer->getCustomerInfo->name }}</div>
-                                <div class="col-md-4 col-5">{{ $customer->getCustomerInfo->birth_date }}</div>
+                                <div class="col-md-4 col-5">{{ $customer->name }}</div>
+                                <div class="col-md-4 col-5">{{ $customer->birth_date }}</div>
                                 <div class="col-md-3 col-5">{{ $customer->phone }}</div>
                             </div>
                         @endforeach

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Острое Зрение</title>
 
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
@@ -21,7 +21,7 @@
     <div class="container px-md-5 py-md-3 py-2">
         <div class="p-3 p-md-4 bg-white rounded-4 d-flex justify-content-between ">
             <div class="col-6 col-md-4">
-                <form class="input-group" method="POST">
+                <form class="input-group" method="POST" action="{{ route('globalSearch') }}">
                     @csrf
                     <input list="suggestions" type="text" id="search" name="search" class="form-control rounded-start"
                            placeholder="Поиск..." aria-label="Поиск"
@@ -240,7 +240,7 @@
                             <div class="col-md-6 col-12">
                                 <label for="phone" class="form-label">Номер телефона покупателя</label>
                                 <input list="phone_list" id="phone" name="phone"
-                                       class="phone_number form-control" type="tel" required/>
+                                       class="phone form-control" type="tel" required/>
                                 <datalist id="phone_list" class="phone_list">
 
                                 </datalist>

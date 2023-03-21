@@ -19,7 +19,7 @@
             <div class="col-6">
                 <label for="name" class="form-label">Имя покупателя</label>
                 <input list="customers" autocomplete="off" name="name" id="name" type="text" class="name form-control"
-                       placeholder="Имя покупателя" value="{{ $customer->getCustomerInfo->name }}" required>
+                       placeholder="Имя покупателя" value="{{ $customer->name }}" required>
                 <datalist id="customers"  class="customers">
 
                 </datalist>
@@ -27,7 +27,7 @@
             <div class="col-6">
                 <label for="birth_date" class="form-label">Дата рождения</label>
                 <input autocomplete="off" name="birth_date" id="birth_date" type="date"
-                       class="form-control" value="{{ $customer->getCustomerInfo->birth_date }}">
+                       class="form-control" value="{{ $customer->birth_date }}">
             </div>
 
             <div class="col-md-6 col-12">
@@ -47,19 +47,19 @@
                 <div class="col-4">
                     <label for="OD_Sph" class="form-label">Sph</label>
                     <input autocomplete="off" type="number" step="any" name="OD_Sph" id="OD_Sph"
-                           class="form-control" value="{{ $customer->getCustomerInfo->OD_Sph }}">
+                           class="form-control" value="{{ $customer->OD_Sph }}">
                 </div>
 
                 <div class="col-4">
                     <label for="OD_Cyl" class="form-label">Cyl</label>
                     <input autocomplete="off" type="number" step="any" name="OD_Cyl" id="OD_Cyl"
-                           class="form-control" value="{{ $customer->getCustomerInfo->OD_Cyl }}">
+                           class="form-control" value="{{ $customer->OD_Cyl }}">
                 </div>
 
                 <div class="col-4">
                     <label for="OD_ax" class="form-label">ax</label>
                     <input autocomplete="off" type="number" step="any" name="OD_ax" id="OD_ax"
-                           class="form-control" value="{{ $customer->getCustomerInfo->OD_ax }}">
+                           class="form-control" value="{{ $customer->OD_ax }}">
                 </div>
             </div>
         </div>
@@ -73,19 +73,19 @@
                 <div class="col-4">
                     <label for="OS_Sph" class="form-label">Sph</label>
                     <input autocomplete="off" type="number" step="any" name="OS_Sph" id="OS_Sph"
-                           class="form-control" value="{{ $customer->getCustomerInfo->OS_ax }}">
+                           class="form-control" value="{{ $customer->OS_ax }}">
                 </div>
 
                 <div class="col-4">
                     <label for="OS_Cyl" class="form-label">Cyl</label>
                     <input autocomplete="off" type="number" step="any" name="OS_Cyl" id="OS_Cyl"
-                           class="form-control" value="{{ $customer->getCustomerInfo->OS_ax }}">
+                           class="form-control" value="{{ $customer->OS_ax }}">
                 </div>
 
                 <div class="col-4">
                     <label for="OS_ax" class="form-label">ax</label>
                     <input autocomplete="off" type="number" step="any" name="OS_ax" id="OS_ax"
-                           class="form-control" value="{{ $customer->getCustomerInfo->OS_ax }}">
+                           class="form-control" value="{{ $customer->OS_ax }}">
                 </div>
             </div>
         </div>
@@ -94,7 +94,7 @@
             <div class="col-6">
                 <label for="Dpp" class="form-label">Dpp</label>
                 <input autocomplete="off" name="Dpp" id="Dpp" type="number" step="any"
-                       class="form-control" value="{{ $customer->getCustomerInfo->Dpp }}">
+                       class="form-control" value="{{ $customer->Dpp }}">
             </div>
         </div>
 

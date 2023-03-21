@@ -25,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $orders = Order::get();
-        $customers = Customer::get();
+        $orders = Order::take(5)->get();
+        $customers = Customer::take(5)->get();
         return view('home', ['orders' => $orders, 'customers' => $customers]);
     }
 

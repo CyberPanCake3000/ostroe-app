@@ -11,9 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_infos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('customers', function (Blueprint $table) {
             $table->string('name');
             $table->date('birth_date')->nullable();
             $table->float('OD_Sph')->nullable();
@@ -31,6 +29,16 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_infos');
+        Schema::table('customers', function (Blueprint $table) {
+            $table->dropColumn('name');
+            $table->dropColumn('birth_date');
+            $table->dropColumn('OD_Sph');
+            $table->dropColumn('OD_Cyl');
+            $table->dropColumn('OD_ax');
+            $table->dropColumn('OS_Sph');
+            $table->dropColumn('OS_Cyl');
+            $table->dropColumn('OS_ax');
+            $table->dropColumn('Dpp');
+        });
     }
 };

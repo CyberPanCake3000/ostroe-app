@@ -38,9 +38,9 @@
                         <div class="d-flex border-bottom p-2" data-bs-toggle="modal"
                              data-bs-target="#orderModal{{ $customer->id }}">
                             <div class="col-md-1 col-1 me-2">{{ $customer->id }}</div>
-                            <div class="col-md-3 col-4">{{ $customer->getCustomerInfo->name }}</div>
+                            <div class="col-md-3 col-4">{{ $customer->name }}</div>
                             <div class="col-md-3 col-5">{{ $customer->phone }}</div>
-                            <div class="col-md-3 col-4">{{ $customer->getCustomerInfo->birth_date }}</div>
+                            <div class="col-md-3 col-4">{{ $customer->birth_date }}</div>
                         </div>
 
                         <div class="modal fade" id="orderModal{{ $customer->id }}" tabindex="-1"
@@ -57,7 +57,7 @@
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between align-items-start">
                                             <h2 class="text-text fw-bold">
-                                                {{ $customer->getCustomerInfo->name }}
+                                                {{ $customer->name }}
                                             </h2>
 
                                             <a href="{{ route('customer.show', $customer->id) }}" class="btn btn-outline-primary d-flex flex-row">
@@ -68,7 +68,7 @@
 
 
                                         <div class="mb-3">
-                                            {{ $customer->getCustomerInfo->birth_date }}
+                                            {{ $customer->birth_date }}
                                         </div>
 
                                         <div class="mb-3">
@@ -86,7 +86,7 @@
                                                         Sph
                                                     </div>
                                                     <div>
-                                                        {{ $customer->getCustomerInfo->OD_Sph }}
+                                                        {{ $customer->OD_Sph }}
                                                     </div>
                                                 </div>
 
@@ -95,7 +95,7 @@
                                                         Cyl
                                                     </div>
                                                     <div>
-                                                        {{ $customer->getCustomerInfo->OD_Cyl }}
+                                                        {{ $customer->OD_Cyl }}
                                                     </div>
                                                 </div>
 
@@ -104,7 +104,7 @@
                                                         ax
                                                     </div>
                                                     <div>
-                                                        {{ $customer->getCustomerInfo->OD_ax }}
+                                                        {{ $customer->OD_ax }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,7 +121,7 @@
                                                         Sph
                                                     </div>
                                                     <div>
-                                                        {{ $customer->getCustomerInfo->OS_Sph }}
+                                                        {{ $customer->OS_Sph }}
                                                     </div>
                                                 </div>
 
@@ -130,7 +130,7 @@
                                                         Cyl
                                                     </div>
                                                     <div>
-                                                        {{ $customer->getCustomerInfo->OS_Cyl }}
+                                                        {{ $customer->OS_Cyl }}
                                                     </div>
                                                 </div>
 
@@ -139,7 +139,7 @@
                                                         ax
                                                     </div>
                                                     <div>
-                                                        {{ $customer->getCustomerInfo->OS_ax }}
+                                                        {{ $customer->OS_ax }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,7 +148,7 @@
                                         <div class="d-flex justify-content-start mb-3">
                                             <div class="col-4">
                                                 <div class="text-muted">Dpp</div>
-                                                {{ $customer->getCustomerInfo->Dpp }}
+                                                {{ $customer->Dpp }}
                                             </div>
                                         </div>
 
@@ -298,7 +298,7 @@
                     </div>
 
                     <div>
-                        <label for="comment" class="form-label">Комментарий по заказу</label>
+                        <label for="comment" class="form-label">Комментарий покупателя</label>
                         <textarea type="text" class="comment form-control mb-3" name="comment"
                                   id="comment"></textarea>
                     </div>
