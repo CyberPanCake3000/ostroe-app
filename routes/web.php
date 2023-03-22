@@ -13,9 +13,9 @@ Auth::routes([
     'reset' => false,
 ]);
 
-//Route::match(['get', 'post', 'put', 'delete'], 'register', function () {
-//    return redirect('/login');
-//});
+Route::match(['get', 'post', 'put', 'delete'], 'register', function () {
+    return redirect('/login');
+});
 
 Route::get('/', function(){
     return redirect()->route('home');
